@@ -5,8 +5,10 @@ const f = createUploadthing();
 
 function handleAuth() {
   const { userId } = auth();
+  console.log(userId);
+
   if (!userId) throw new Error("Unauthorized");
-  return { userId };
+  return { userId: userId };
 }
 
 export const ourFileRouter = {
