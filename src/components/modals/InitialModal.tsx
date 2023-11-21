@@ -11,7 +11,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/src/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -19,11 +19,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+} from "@/src/components/ui/form";
+import { Input } from "@/src/components/ui/input";
+import { Button } from "@/src/components/ui/button";
 import { useEffect, useState } from "react";
-import FileUpload from "@/components/FileUpload";
+import FileUpload from "@/src/components/FileUpload";
 
 const formSchema = z.object({
   name: z.string().min(1, {

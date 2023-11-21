@@ -1,6 +1,6 @@
 "use client";
 import { SingleImageDropzone } from "./SingleImageDropzone";
-import { useEdgeStore } from "@/lib/edgestore";
+import { useEdgeStore } from "@/src/lib/edgestore";
 import { X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
