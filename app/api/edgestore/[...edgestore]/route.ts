@@ -15,8 +15,6 @@ async function handleAuth({ req }: CreateContextOptions): Promise<Context> {
   const { userId } = auth();
   if (!userId) throw new Error("Unauthorized");
 
-  console.log(userId);
-
   return {
     userId: userId,
   };
@@ -24,7 +22,6 @@ async function handleAuth({ req }: CreateContextOptions): Promise<Context> {
 
 const edgeStoreRouter = es.router({
   publicFiles: es.fileBucket(),
-
   publicImages: es.imageBucket({
     maxSize: 1024 * 1024 * 4,
   }),

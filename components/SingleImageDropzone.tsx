@@ -149,7 +149,7 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
           ) : (
             // Upload Icon
             <div className="flex flex-col items-center justify-center text-xs text-gray-400">
-              <UploadCloudIcon className="mb-2 h-14 w-14" />
+              <UploadCloudIcon className="mb-2 h-11 w-11" />
               <div className="text-base text-gray-400">
                 Choose files or drag and drop
                 <p className="mt-3 text-xs text-gray-700 ">Image (4MB)</p>
@@ -223,3 +223,5 @@ function formatFileSize(bytes?: number) {
 }
 
 export { SingleImageDropzone };
+
+
