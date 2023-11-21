@@ -4,7 +4,7 @@ import { UploadCloudIcon, X } from "lucide-react";
 import * as React from "react";
 import { useDropzone, type DropzoneOptions } from "react-dropzone";
 import { twMerge } from "tailwind-merge";
-import { Spinner } from "./spinner";
+import { Spinner } from "./Spinner";
 
 const variants = {
   base: "relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-[200px] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out",
@@ -149,9 +149,10 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
           ) : (
             // Upload Icon
             <div className="flex flex-col items-center justify-center text-xs text-gray-400">
-              <UploadCloudIcon className="mb-2 h-7 w-7" />
-              <div className="text-gray-400">
-                Click or drag file to this area to upload
+              <UploadCloudIcon className="mb-2 h-14 w-14" />
+              <div className="text-base text-gray-400">
+                Choose files or drag and drop
+                <p className="mt-3 text-xs text-gray-700 ">Image (4MB)</p>
               </div>
             </div>
           )}

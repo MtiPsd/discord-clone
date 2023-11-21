@@ -1,6 +1,4 @@
 "use client";
-import { UploadDropzone } from "@/lib/uploadthing";
-import "@uploadthing/react/styles.css";
 import { SingleImageDropzone } from "./SingleImageDropzone";
 import { useEdgeStore } from "@/lib/edgestore";
 import { useState } from "react";
@@ -24,15 +22,16 @@ function FileUpload({ onChange, value, endpoint }: FileUploadProps) {
   return (
     <>
       <SingleImageDropzone
-        width={200}
+        width={300}
         height={200}
         value={file}
+        disabled={isSubmitting}
         onChange={async (file?: File) => {
           if (file) {
             setIsSubmitting(true);
             setFile(file);
 
-            const res = await edgestore.publicFiles.upload({
+            await edgestore.publicFiles.upload({
               file,
               onProgressChange: (progress) => {
                 console.log(progress);
