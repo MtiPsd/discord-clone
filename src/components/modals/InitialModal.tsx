@@ -25,7 +25,6 @@ import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
 import { useEffect, useState } from "react";
 import FileUpload from "@/src/components/FileUpload";
-import console from "console";
 import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
@@ -57,7 +56,7 @@ function InitialModal() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      await axios.post("api/servers", values);
+      await axios.post("/api/servers", values);
 
       form.reset();
       router.refresh();
