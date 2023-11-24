@@ -2,6 +2,8 @@ import { currentProfile } from "@/src/lib/currentProfile";
 import { db } from "@/src/lib/db";
 import { Server } from "@prisma/client";
 import { redirect } from "next/navigation";
+import { Separator } from "@/src/components/ui/separator";
+import { ScrollArea } from "@/src/components/ui/scroll-area";
 
 import NavigationAction from "./NavigationAction";
 
@@ -28,6 +30,17 @@ async function NavigationSidebar() {
       text-primary dark:bg-[#1E1F22] "
     >
       <NavigationAction />
+      <Separator
+        className="mx-auto h-[2px] w-10 rounded-md 
+       bg-zinc-300 dark:bg-zinc-700"
+      />
+      <ScrollArea className="w-full flex-1">
+        {servers.map((server) => (
+          <div key={server.id} className="mb-4">
+            <NavigationItem />
+          </div>
+        ))}
+      </ScrollArea>
     </div>
   );
 }
