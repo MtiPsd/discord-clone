@@ -3,6 +3,8 @@ import { db } from "@/src/lib/db";
 import { Server } from "@prisma/client";
 import { redirect } from "next/navigation";
 
+import NavigationAction from "./NavigationAction";
+
 async function NavigationSidebar() {
   const profile = await currentProfile();
 
@@ -25,7 +27,7 @@ async function NavigationSidebar() {
       className="flex h-full w-full flex-col items-center space-y-4 py-3 
       text-primary dark:bg-[#1E1F22] "
     >
-      Navigation Sidebar
+      <NavigationAction />
     </div>
   );
 }
