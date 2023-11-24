@@ -20,7 +20,15 @@ function FileUpload({ onChange, value, endpoint }: FileUploadProps) {
   if (value) {
     return (
       <div className="relative h-20 w-20">
-        <Image fill alt="Upload" src={value} className="rounded-full" />
+        <Image
+          fill
+          alt="Upload"
+          src={value}
+          className="rounded-full"
+          sizes="100vw"
+          objectPosition="center"
+          objectFit="cover"
+        />
 
         <button
           onClick={() => onChange("")}
