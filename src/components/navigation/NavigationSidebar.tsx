@@ -20,7 +20,14 @@ async function NavigationSidebar() {
     },
   });
 
-  return <div>Navigation Sidebar</div>;
+  return (
+    <div
+      className="flex h-full w-full flex-col items-center space-y-4 py-3 
+      text-primary dark:bg-[#1E1F22] "
+    >
+      Navigation Sidebar
+    </div>
+  );
 }
 
 export default NavigationSidebar;
