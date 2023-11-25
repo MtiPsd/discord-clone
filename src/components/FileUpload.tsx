@@ -15,7 +15,6 @@ function FileUpload({ onChange, value, endpoint }: FileUploadProps) {
   const [file, setFile] = useState<File>();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { edgestore } = useEdgeStore();
-  // const fileType = value?.split(".").pop();
 
   if (value) {
     return (
@@ -24,10 +23,7 @@ function FileUpload({ onChange, value, endpoint }: FileUploadProps) {
           fill
           alt="Upload"
           src={value}
-          className="rounded-full"
-          sizes="100vw"
-          objectPosition="center"
-          objectFit="cover"
+          className="rounded-full object-cover object-center"
         />
 
         <button
