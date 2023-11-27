@@ -1,10 +1,12 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider } from "@/src/components/providers/ThemeProvider";
 import { cn } from "@/src/lib/utils";
 import { EdgeStoreProvider } from "@/src/lib/edgestore";
-import "./globals.css";
+
+import ModalProvider from "@/src/components/providers/ModalProvider";
+import ThemeProvider from "@/src/components/providers/ThemeProvider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -29,6 +31,7 @@ export default function RootLayout({
               enableSystem={false}
               storageKey="discord-theme"
             >
+              <ModalProvider />
               {children}
             </ThemeProvider>
           </EdgeStoreProvider>

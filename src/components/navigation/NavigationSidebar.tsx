@@ -4,11 +4,11 @@ import { Server } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { Separator } from "@/src/components/ui/separator";
 import { ScrollArea } from "@/src/components/ui/scroll-area";
+import { UserButton } from "@clerk/nextjs";
 
 import NavigationAction from "./NavigationAction";
 import NavigationItem from "./NavigationItem";
-import { ModeToggle } from "@/src/components/ModeToggle";
-import { UserButton } from "@clerk/nextjs";
+import ModeToggle from "@/src/components/ModeToggle";
 
 async function NavigationSidebar() {
   const profile = await currentProfile();
