@@ -3,6 +3,8 @@ import { db } from "@/src/lib/db";
 import { ChannelType } from "@prisma/client";
 import { redirect } from "next/navigation";
 
+import ServerHeader from "./ServerHeader";
+
 interface ServerSidebarProps {
   serverId: string;
 }
@@ -55,7 +57,14 @@ async function ServerSidebar({ serverId }: ServerSidebarProps) {
   const role = server.members.find((member) => member.profileId === profile.id)
     ?.role;
 
-  return <div>Server -- Sidebar --</div>;
+  return (
+    <div
+      className="flex h-full w-full flex-col bg-[#F2F3F5] 
+      text-primary dark:bg-[#2B2D31]"
+    >
+      <ServerHeader server={server} role={role} />
+    </div>
+  );
 }
 
 export default ServerSidebar;
