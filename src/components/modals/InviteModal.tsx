@@ -39,13 +39,12 @@ function InviteModal() {
     try {
       setIsLoading(true);
       const response = await axios.patch(
-        `/api/servers/${server?.id}/invite-code`,
+        `/api/servers/${server?.id}/inviteCode`,
       );
-      console.log(response.data);
 
       onOpen("invite", { server: response.data });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
