@@ -14,11 +14,12 @@ import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
 import { useOrigin } from "@/src/hooks/useOrigin";
 import { useState } from "react";
+import axios from "axios";
 
 function InviteModal() {
   const [copied, setCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { isOpen, type, onClose, data } = useModal();
+  const { isOpen, type, onClose, onOpen, data } = useModal();
 
   const origin = useOrigin();
   const { server } = data;
@@ -32,6 +33,22 @@ function InviteModal() {
     setTimeout(() => {
       setCopied(false);
     }, 1000);
+  }
+
+  async function onGenerate() {
+    try {
+      setIsLoading(true);
+      const response = await axios.patch(
+        `/api/servers/${server?.id}/invite-code`,
+      );
+      console.log(response.data);
+
+      onOpen("invite", { server: response.data });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -48,10 +65,11 @@ function InviteModal() {
           </Label>
           <div className="mt-2 flex items-center gap-x-2">
             <Input
+              disabled={isLoading}
               className="border-0 bg-zinc-300/50 text-black focus-visible:ring-0 focus-visible:ring-offset-0"
               value={inviteUrl}
             />
-            <Button size="icon" onClick={onCopy}>
+            <Button disabled={isLoading} size="icon" onClick={onCopy}>
               {copied ? (
                 <Check className="h-4 w-4" />
               ) : (
@@ -60,6 +78,8 @@ function InviteModal() {
             </Button>
           </div>
           <Button
+            onClick={onGenerate}
+            disabled={isLoading}
             variant="link"
             size="sm"
             className="mt-4 text-sm text-zinc-500"
