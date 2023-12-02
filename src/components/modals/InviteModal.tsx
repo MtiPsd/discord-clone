@@ -20,8 +20,8 @@ function InviteModal() {
   const [copied, setCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { isOpen, type, onClose, onOpen, data } = useModal();
-
   const origin = useOrigin();
+
   const { server } = data;
   const isModalOpen = isOpen && type === "invite";
   const inviteUrl = `${origin}/invite/${server?.inviteCode}`;

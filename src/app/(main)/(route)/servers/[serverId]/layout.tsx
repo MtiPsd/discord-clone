@@ -5,13 +5,14 @@ import { redirectToSignIn } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 
-async function ServerIdLayout({
-  children,
-  params,
-}: {
+interface ServerIdLayoutProps {
   children: ReactNode;
-  params: { serverId: string };
-}) {
+  params: {
+    serverId: string;
+  };
+}
+
+async function ServerIdLayout({ children, params }: ServerIdLayoutProps) {
   const profile = await currentProfile();
 
   if (!profile) {
