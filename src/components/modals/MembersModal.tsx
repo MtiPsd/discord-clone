@@ -12,18 +12,27 @@ import { ScrollArea } from "@/src/components/ui/scroll-area";
 import { useModal } from "@/src/hooks/useModalStore";
 import { ServerWithMembersWithProfiles } from "@/types";
 import UserAvatar from "@/src/components/UserAvatar";
-import { MoreVertical, ShieldAlert, ShieldCheck } from "lucide-react";
+import {
+  Check,
+  Gavel,
+  Loader2,
+  MoreVertical,
+  Shield,
+  ShieldAlert,
+  ShieldCheck,
+  ShieldQuestion,
+} from "lucide-react";
 import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuTrigger,
   DropdownMenuSubTrigger,
+  DropdownMenuItem,
 } from "@/src/components/ui/dropdown-menu";
 
 const roleIconMap = {
@@ -70,9 +79,45 @@ function MembersModal() {
                       <DropdownMenuTrigger>
                         <MoreVertical className="h-4 w-4 text-zinc-500" />
                       </DropdownMenuTrigger>
+                      <DropdownMenuContent side="left">
+                        <DropdownMenuSub>
+                          <DropdownMenuSubTrigger className="flex items-center">
+                            <ShieldQuestion className="mr-2 h-4 w-4" />
+                            <span>Role</span>
+                          </DropdownMenuSubTrigger>
+
+                          <DropdownMenuPortal>
+                            <DropdownMenuSubContent>
+                              <DropdownMenuItem>
+                                <Shield className="mr-2 h-4 w-4" />
+                                Guest
+                                {member.role === "GUEST" && (
+                                  <Check className="ml-auto h-4 w-4" />
+                                )}
+                              </DropdownMenuItem>
+
+                              <DropdownMenuItem>
+                                <ShieldCheck className="mr-2 h-4 w-4" />
+                                Moderator
+                                {member.role === "MODERATOR" && (
+                                  <Check className="ml-auto h-4 w-4" />
+                                )}
+                              </DropdownMenuItem>
+                            </DropdownMenuSubContent>
+                          </DropdownMenuPortal>
+                        </DropdownMenuSub>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>
+                          <Gavel className="mr-2 h-4 w-4" />
+                          Kick
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
                 )}
+              {loadingId === member.id && (
+                <Loader2 className="ml-auto h-4 w-4 animate-spin text-zinc-500" />
+              )}
             </div>
           ))}
         </ScrollArea>
