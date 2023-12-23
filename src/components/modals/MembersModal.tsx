@@ -56,6 +56,7 @@ function MembersModal() {
   async function onRoleChange(memberId: string, role: MemberRole) {
     try {
       setLoadingId(memberId);
+      // * state management using url *
       const url = qs.stringifyUrl({
         url: `/api/members/${memberId}`,
         query: {
@@ -64,8 +65,34 @@ function MembersModal() {
       });
 
       const response = await axios.patch(url, { role });
-
+      // update server components
       router.refresh();
+      // update ui components that use "zustand"
+      // for state management
+      onOpen("members", { server: response.data });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoadingId("");
+    }
+  }
+
+  async function onKick(memberId: string) {
+    try {
+      setLoadingId(memberId);
+      // * state management using url *
+      const url = qs.stringifyUrl({
+        url: `/api/members/${memberId}`,
+        query: {
+          serverId: server?.id,
+        },
+      });
+
+      const response = await axios.delete(url);
+      // update server components
+      router.refresh();
+      // update ui components that use "zustand"
+      // for state management
       onOpen("members", { server: response.data });
     } catch (error) {
       console.error(error);
@@ -139,7 +166,7 @@ function MembersModal() {
                           </DropdownMenuPortal>
                         </DropdownMenuSub>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => onKick(member.id)}>
                           <Gavel className="mr-2 h-4 w-4" />
                           Kick
                         </DropdownMenuItem>
