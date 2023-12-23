@@ -60,7 +60,6 @@ function MembersModal() {
         url: `/api/members/${memberId}`,
         query: {
           serverId: server?.id,
-          memberId,
         },
       });
 
