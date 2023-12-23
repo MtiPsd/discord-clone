@@ -1,14 +1,13 @@
-import { currentProfile } from "@/src/lib/currentProfile";
-import { db } from "@/src/lib/db";
-import { Server } from "@prisma/client";
-import { redirect } from "next/navigation";
-import { Separator } from "@/src/components/ui/separator";
 import { ScrollArea } from "@/src/components/ui/scroll-area";
-import { UserButton } from "@clerk/nextjs";
-
+import { Separator } from "@/src/components/ui/separator";
+import { currentProfile } from "@/src/lib/currentProfile";
+import ModeToggle from "@/src/components/ModeToggle";
 import NavigationAction from "./NavigationAction";
 import NavigationItem from "./NavigationItem";
-import ModeToggle from "@/src/components/ModeToggle";
+import { redirect } from "next/navigation";
+import { UserButton } from "@clerk/nextjs";
+import { Server } from "@prisma/client";
+import { db } from "@/src/lib/db";
 
 async function NavigationSidebar() {
   const profile = await currentProfile();

@@ -1,9 +1,9 @@
-import { auth } from "@clerk/nextjs";
-import { initEdgeStore } from "@edgestore/server";
 import {
   CreateContextOptions,
   createEdgeStoreNextHandler,
 } from "@edgestore/server/adapters/next/app";
+import { initEdgeStore } from "@edgestore/server";
+import { auth } from "@clerk/nextjs";
 
 const es = initEdgeStore.context<Context>().create();
 

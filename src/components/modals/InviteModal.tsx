@@ -1,17 +1,16 @@
 "use client";
 
-import { Check, Copy, RefreshCcw } from "lucide-react";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/src/components/ui/dialog";
-
+import { Check, Copy, RefreshCcw } from "lucide-react";
 import { useModal } from "@/src/hooks/useModalStore";
+import { Button } from "@/src/components/ui/button";
 import { Label } from "@/src/components/ui/label";
 import { Input } from "@/src/components/ui/input";
-import { Button } from "@/src/components/ui/button";
 import { useOrigin } from "@/src/hooks/useOrigin";
 import { useState } from "react";
 import axios from "axios";

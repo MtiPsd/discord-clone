@@ -1,9 +1,9 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
-import { cn } from "@/src/lib/utils";
 import { EdgeStoreProvider } from "@/src/lib/edgestore";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Open_Sans } from "next/font/google";
+import { cn } from "@/src/lib/utils";
+import type { Metadata } from "next";
+import "./globals.css";
 
 import ModalProvider from "@/src/components/providers/ModalProvider";
 import ThemeProvider from "@/src/components/providers/ThemeProvider";

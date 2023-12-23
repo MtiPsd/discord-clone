@@ -1,19 +1,16 @@
 "use client";
 
-import axios from "axios";
-import qs from "query-string";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/src/components/ui/dialog";
-import { ScrollArea } from "@/src/components/ui/scroll-area";
-
-import { useModal } from "@/src/hooks/useModalStore";
-import { ServerWithMembersWithProfiles } from "@/types";
-import UserAvatar from "@/src/components/UserAvatar";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/src/components/ui/dropdown-menu";
 import {
   Check,
   Gavel,
@@ -24,20 +21,22 @@ import {
   ShieldCheck,
   ShieldQuestion,
 } from "lucide-react";
-import { useState } from "react";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuTrigger,
-  DropdownMenuSubTrigger,
-  DropdownMenuItem,
-} from "@/src/components/ui/dropdown-menu";
-import { MemberRole } from "@prisma/client";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/src/components/ui/dialog";
+import { ScrollArea } from "@/src/components/ui/scroll-area";
+import { ServerWithMembersWithProfiles } from "@/types";
+import UserAvatar from "@/src/components/UserAvatar";
+import { useModal } from "@/src/hooks/useModalStore";
 import { useRouter } from "next/navigation";
+import { MemberRole } from "@prisma/client";
+import { useState } from "react";
+import qs from "query-string";
+import axios from "axios";
 
 const roleIconMap = {
   GUEST: null,

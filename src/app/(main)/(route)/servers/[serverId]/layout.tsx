@@ -1,8 +1,8 @@
 import ServerSidebar from "@/src/components/server/ServerSidebar";
 import { currentProfile } from "@/src/lib/currentProfile";
-import { db } from "@/src/lib/db";
 import { redirectToSignIn } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+import { db } from "@/src/lib/db";
 import { ReactNode } from "react";
 
 interface ServerIdLayoutProps {

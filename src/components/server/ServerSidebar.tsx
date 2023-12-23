@@ -1,9 +1,8 @@
 import { currentProfile } from "@/src/lib/currentProfile";
-import { db } from "@/src/lib/db";
 import { ChannelType } from "@prisma/client";
 import { redirect } from "next/navigation";
-
 import ServerHeader from "./ServerHeader";
+import { db } from "@/src/lib/db";
 
 interface ServerSidebarProps {
   serverId: string;
@@ -54,8 +53,9 @@ async function ServerSidebar({ serverId }: ServerSidebarProps) {
     return redirect("/");
   }
 
-  const role = server.members.find((member) => member.profileId === profile.id)
-    ?.role;
+  const role = server.members.find(
+    (member) => member.profileId === profile.id,
+  )?.role;
 
   return (
     <div
