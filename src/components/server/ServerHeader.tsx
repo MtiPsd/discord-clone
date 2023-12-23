@@ -26,7 +26,7 @@ interface ServerHeaderProps {
 
 function ServerHeader({ server, role }: ServerHeaderProps) {
   const { onOpen } = useModal();
-  const isAdmin = MemberRole.ADMIN;
+  const isAdmin = role === MemberRole.ADMIN;
   const isModerator = isAdmin || role === MemberRole.MODERATOR;
 
   return (
@@ -64,7 +64,10 @@ function ServerHeader({ server, role }: ServerHeaderProps) {
         )}
 
         {isAdmin && (
-          <DropdownMenuItem className="cursor-pointer px-3 py-2 text-sm">
+          <DropdownMenuItem
+            className="cursor-pointer px-3 py-2 text-sm"
+            onClick={() => onOpen("members", { server })}
+          >
             Manage Members
             <Users className="ml-auto h-4 w-4" />
           </DropdownMenuItem>
